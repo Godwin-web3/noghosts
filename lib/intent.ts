@@ -1,17 +1,17 @@
 export type Category = "health" | "yield" | "grid" | "rebalance" | "other";
 
+export const CATEGORIES: { id: Exclude<Category, "other">; label: string; intent: string }[] = [
+  { id: "health", label: "Health factor", intent: "Protect my Venus position under 1.3 HF. Do not take custody." },
+  { id: "yield", label: "Yield", intent: "Find best stable yield for 100 USDT on BSC. Read only." },
+  { id: "grid", label: "Grid / range", intent: "Watch my Pancake V3 LP range. Do not take custody." },
+  { id: "rebalance", label: "Rebalance", intent: "Rebalance Pancake LP without taking custody." },
+];
+
 const RULES: { cat: Category; keys: string[] }[] = [
   { cat: "health", keys: ["hf", "health factor", "liquidation", "venus", "lista", "collateral", "borrow"] },
   { cat: "yield", keys: ["yield", "apy", "apr", "earn", "stable", "usdt", "usdc"] },
   { cat: "grid", keys: ["grid", "range", "mm", "market make", "v3"] },
-  { cat: "rebalance", keys: ["rebalance", "rebalancing", "lp", "pancake", "cake", "liquidity"] },
-];
-
-export const CATEGORIES: { id: Category; label: string; intent: string }[] = [
-  { id: "health", label: "Health factor", intent: "Protect my Venus position under 1.3 HF" },
-  { id: "yield", label: "Yield", intent: "Find best stable yield for 100 USDT on BSC" },
-  { id: "grid", label: "Grid / range", intent: "Watch my Pancake V3 LP range" },
-  { id: "rebalance", label: "Rebalance", intent: "Rebalance my Pancake LP without taking custody" },
+  { cat: "rebalance", keys: ["rebalance", "pancake", "cake", "lp", "liquidity"] },
 ];
 
 export function classifyIntent(text: string): Category {

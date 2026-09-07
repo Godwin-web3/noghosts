@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Mono, IBM_Plex_Sans, Newsreader } from "next/font/google";
+import { IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
 import Link from "next/link";
 import "./globals.css";
 
@@ -13,11 +13,6 @@ const mono = IBM_Plex_Mono({
   weight: ["400", "500"],
   variable: "--font-mono",
 });
-const serif = Newsreader({
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  variable: "--font-serif",
-});
 
 export const metadata: Metadata = {
   title: "Berth",
@@ -27,15 +22,16 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${sans.variable} ${mono.variable} ${serif.variable}`}>
+    <html lang="en" className={`${sans.variable} ${mono.variable}`}>
       <body>
-        <div className="shell">
+        <div className="app">
           <header className="top">
             <Link className="brand" href="/">
               <img src="/mark.svg" alt="" />
               BERTH
             </Link>
             <nav className="nav-right">
+              <Link href="/">Desk</Link>
               <Link href="/advantage">Advantage</Link>
               <Link href="/proof">Proof</Link>
               <span className="pill">BSC 56</span>
