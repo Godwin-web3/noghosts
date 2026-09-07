@@ -57,15 +57,15 @@ export default function Home() {
 
   return (
     <main>
-      <p className="badge live">EVIDENCE OVER VANITY</p>
-      <h1>Type the job. Ghosts stay invisible.</h1>
+      <p className="badge live">A BERTH IS EARNED</p>
+      <h1>Type the job. Only what can dock.</h1>
       <p className="muted">
-        BSC has hundreds of thousands of ERC-8004 registrations. Most never answer a health check.
-        No-Ghosts only ranks agents with a live endpoint and a payment or protocol signal.
+        Hundreds of thousands of ERC-8004 names on BSC. Most never answer.
+        Berth only ranks agents with a live endpoint and a payment or protocol signal.
       </p>
       <div className="intent">
         <input value={q} onChange={(e) => setQ(e.target.value)} onKeyDown={(e) => e.key === "Enter" && search()} />
-        <button onClick={() => search()}>{loading ? "Reading registry…" : "Hire"}</button>
+        <button onClick={() => search()}>{loading ? "Reading registry…" : "Find berth"}</button>
       </div>
       <div className="chips">
         {INTENT_EXAMPLES.map((ex) => (
@@ -80,7 +80,7 @@ export default function Home() {
         </button>
         {data && (
           <div className="muted">
-            scanned {data.scanned} · ghosts dropped {data.ghostsDropped} · category {data.category}
+            scanned {data.scanned} · refused berth {data.ghostsDropped} · category {data.category}
           </div>
         )}
       </div>
@@ -100,7 +100,7 @@ export default function Home() {
           <article className="card" key={a.id}>
             <div className="row">
               <div>
-                <div className={a.health.live ? "badge live" : "badge dead"}>{a.health.live ? "LIVE" : "GHOST"}</div>
+                <div className={a.health.live ? "badge live" : "badge dead"}>{a.health.live ? "DOCKED" : "AT SEA"}</div>
                 <h2 style={{ marginTop: 6 }}>{a.name}</h2>
               </div>
               <div className="muted">#{a.tokenId}</div>

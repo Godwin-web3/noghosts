@@ -3,8 +3,8 @@ import "./globals.css";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "No-Ghosts — Intent Hire on BSC",
-  description: "Type what you need. Only alive, receipt-backed ERC-8004 agents show up.",
+  title: "Berth",
+  description: "A berth only if the agent can dock. Live ERC-8004 agents on BSC, hired on ERC-8183.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -13,7 +13,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <div className="wrap">
           <nav className="nav">
-            <Link className="brand" href="/">NO-GHOSTS</Link>
+            <Link className="brand" href="/">BERTH</Link>
             <div className="muted">
               <Link href="/advantage">Advantage</Link>
               {" · "}
