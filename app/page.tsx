@@ -57,61 +57,69 @@ export default function Home() {
 
   return (
     <main>
-      <p className="badge live">A BERTH IS EARNED</p>
-      <h1>Type the job. Only what can dock.</h1>
-      <p className="muted">
-        Hundreds of thousands of ERC-8004 names on BSC. Most never answer.
-        Berth only ranks agents with a live endpoint and a payment or protocol signal.
-      </p>
-      <div className="intent">
-        <input value={q} onChange={(e) => setQ(e.target.value)} onKeyDown={(e) => e.key === "Enter" && search()} />
-        <button onClick={() => search()}>{loading ? "Reading registry…" : "Find berth"}</button>
-      </div>
-      <div className="chips">
-        {INTENT_EXAMPLES.map((ex) => (
-          <button key={ex} className={q === ex ? "on" : ""} onClick={() => { setQ(ex); search(ex); }}>
-            {ex}
-          </button>
-        ))}
-      </div>
-      <div className="row">
-        <button className="btn ghost" onClick={connect}>
-          {wallet ? `${wallet.slice(0, 6)}…${wallet.slice(-4)}` : "Connect wallet · Venus mirror"}
-        </button>
-        {data && (
-          <div className="muted">
-            scanned {data.scanned} · refused berth {data.ghostsDropped} · category {data.category}
+      <section className="hero">
+        <div>
+          <p className="kicker">A BERTH IS EARNED</p>
+          <h1>Type the job. Only what can dock.</h1>
+          <p className="lede">
+            Hundreds of thousands of ERC-8004 names on BSC. Most never answer.
+            Berth ranks agents with a live endpoint and a payment or protocol signal.
+          </p>
+          <div className="search">
+            <input value={q} onChange={(e) => setQ(e.target.value)} onKeyDown={(e) => e.key === "Enter" && search()} />
+            <button onClick={() => search()}>{loading ? "Reading…" : "Find berth"}</button>
           </div>
-        )}
+          <div className="temps">
+            {INTENT_EXAMPLES.map((ex) => (
+              <button key={ex} className={q === ex ? "on" : ""} onClick={() => { setQ(ex); search(ex); }}>
+                {ex}
+              </button>
+            ))}
+          </div>
+        </div>
+        <aside className="census">
+          <h3>CENSUS · THIS PASS</h3>
+          <div className="metric"><span>Scanned</span><b>{data?.scanned ?? "—"}</b></div>
+          <div className="metric"><span>Refused berth</span><b>{data?.ghostsDropped ?? "—"}</b></div>
+          <div className="metric"><span>Intent class</span><b>{data?.category ?? "—"}</b></div>
+          <div className="metric"><span>Shown</span><b>{data?.agents?.length ?? 0}</b></div>
+          <div className="metric"><span>Stars in rank</span><b>never</b></div>
+        </aside>
+      </section>
+      <div className="toolbar">
+        <button className="btn quiet" onClick={connect}>
+          {wallet ? `${wallet.slice(0, 6)}…${wallet.slice(-4)}` : "Connect · Venus mirror"}
+        </button>
+        <span className="muted mono">source 8004scan · chain 56</span>
       </div>
       {venus && (
-        <div className="card" style={{ marginTop: 16 }}>
+        <div className="panel">
           <div className="row">
-            <strong>Venus Core mirror</strong>
-            <span className={venus.atRisk ? "badge dead" : "badge live"}>{venus.atRisk ? "AT RISK" : venus.idle ? "NO POSITION" : "BUFFER"}</span>
+            <strong>Venus Core</strong>
+            <span className={venus.atRisk ? "status dead" : "status live"}>
+              {venus.atRisk ? "AT RISK" : venus.idle ? "NO POSITION" : "BUFFER"}
+            </span>
           </div>
           <p className="muted">{venus.note}</p>
-          <p className="mono">liquidity ≈ ${venus.liquidityUsdApprox.toFixed(2)} · shortfall ≈ ${venus.shortfallUsdApprox.toFixed(2)}</p>
+          <p className="mono faint">liquidity {venus.liquidityUsdApprox.toFixed(2)} · shortfall {venus.shortfallUsdApprox.toFixed(2)}</p>
         </div>
       )}
       {err && <p className="err">{err}</p>}
-      <div className="grid" style={{ marginTop: 20 }}>
+      <div className="slips">
         {(data?.agents || []).slice(0, 3).map((a) => (
-          <article className="card" key={a.id}>
-            <div className="row">
-              <div>
-                <div className={a.health.live ? "badge live" : "badge dead"}>{a.health.live ? "DOCKED" : "AT SEA"}</div>
-                <h2 style={{ marginTop: 6 }}>{a.name}</h2>
+          <article className="slip" key={a.id}>
+            <div className="slip-id">#{a.tokenId}</div>
+            <div>
+              <div className={a.health.live ? "status live" : "status dead"}>{a.health.live ? "DOCKED" : "AT SEA"}</div>
+              <h2>{a.name}</h2>
+              <p>{a.description || "No description on the registration file."}</p>
+              <div className="meta">
+                {(a.protocols.join(" · ") || "no protocol")}{a.x402 ? " · x402" : ""} · receipts {a.receipts.score} · stars {a.receipts.stars} ignored
               </div>
-              <div className="muted">#{a.tokenId}</div>
+              <div className="meta">{a.endpoints[0]?.url || "endpoint missing"}</div>
             </div>
-            <p>{a.description || "No description on the registration file."}</p>
-            <p className="mono muted">
-              {a.protocols.join(" · ") || "no protocol"} {a.x402 ? "· x402" : ""} · receipts {a.receipts.score} · stars {a.receipts.stars} ignored
-            </p>
-            <p className="mono muted">{a.endpoints[0]?.url || "endpoint missing"}</p>
-            <div className="row">
-              <Link href={`/agent/${a.tokenId}`}>Open evidence</Link>
+            <div className="actions">
+              <Link href={`/agent/${a.tokenId}`} className="muted">Evidence</Link>
               <Link className="btn" href={`/hire/${a.tokenId}?intent=${encodeURIComponent(q)}`}>Hire</Link>
             </div>
           </article>
