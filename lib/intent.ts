@@ -1,11 +1,17 @@
-export type Category = "health" | "yield" | "grid" | "monitor" | "pancake" | "other";
+export type Category = "health" | "yield" | "grid" | "rebalance" | "other";
 
 const RULES: { cat: Category; keys: string[] }[] = [
   { cat: "health", keys: ["hf", "health factor", "liquidation", "venus", "lista", "collateral", "borrow"] },
   { cat: "yield", keys: ["yield", "apy", "apr", "earn", "stable", "usdt", "usdc"] },
-  { cat: "grid", keys: ["grid", "range", "mm", "market make"] },
-  { cat: "pancake", keys: ["pancake", "cake", "v3", "lp", "liquidity"] },
-  { cat: "monitor", keys: ["monitor", "watch", "alert", "price", "wallet"] },
+  { cat: "grid", keys: ["grid", "range", "mm", "market make", "v3"] },
+  { cat: "rebalance", keys: ["rebalance", "rebalancing", "lp", "pancake", "cake", "liquidity"] },
+];
+
+export const CATEGORIES: { id: Category; label: string; intent: string }[] = [
+  { id: "health", label: "Health factor", intent: "Protect my Venus position under 1.3 HF" },
+  { id: "yield", label: "Yield", intent: "Find best stable yield for 100 USDT on BSC" },
+  { id: "grid", label: "Grid / range", intent: "Watch my Pancake V3 LP range" },
+  { id: "rebalance", label: "Rebalance", intent: "Rebalance my Pancake LP without taking custody" },
 ];
 
 export function classifyIntent(text: string): Category {
@@ -26,9 +32,4 @@ export function classifyAgent(name: string, description: string, protocols: stri
   return classifyIntent(`${name} ${description} ${protocols.join(" ")}`);
 }
 
-export const INTENT_EXAMPLES = [
-  "Protect my Venus position under 1.3 HF",
-  "Find best stable yield for 100 USDT on BSC",
-  "Watch my Pancake V3 LP range",
-  "Run a grid on BNB/USDT without taking custody",
-];
+export const INTENT_EXAMPLES = CATEGORIES.map((c) => c.intent);
