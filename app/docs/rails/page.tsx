@@ -1,5 +1,5 @@
 import { COMMERCE, EVALUATOR, IDENTITY, PAYMENT_TOKEN, VENUS_COMPTROLLER } from "@/lib/config";
-import { DocsNav } from "../page";
+import { DocsNav } from "../nav";
 
 export default function RailsDoc() {
   const rows = [

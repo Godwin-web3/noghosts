@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { DocsNav } from "../page";
+import { DocsNav } from "../nav";
 
 export default function HireDoc() {
   return (
