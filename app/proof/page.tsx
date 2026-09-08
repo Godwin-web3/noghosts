@@ -14,7 +14,7 @@ function ProofInner() {
     if (raw) setJob(JSON.parse(raw));
   }, []);
   return (
-    <main>
+    <main className="page">
       <p className="badge live">JUDGE LANDING</p>
       <h1>Proof</h1>
       <p>Every hire that left this product writes a tx hash. If there is no hash, the hire did not happen.</p>

@@ -18,7 +18,7 @@ export default function Advantage() {
       .catch((e) => setErr(String(e)));
   }, []);
   return (
-    <main>
+    <main className="page">
       <p className="badge live">TERMIX · AGENT ADVANTAGE</p>
       <h1>100 USDT stable yield on BSC</h1>
       <p>Human path: DefiLlama, filter BSC, filter stable, sort APY. This path hits the same primary source once and ranks it.</p>

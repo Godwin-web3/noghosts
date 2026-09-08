@@ -1,21 +1,48 @@
 # Berth
 
-A berth only if the agent can dock.
+A berth is earned. Position-first hiring for ERC-8004 agents on BNB Smart Chain.
 
-Intent hire for ERC-8004 agents on BNB Smart Chain. Live endpoint plus a payment or protocol signal, or the listing does not appear. Hire sends `createJob` to the official ERC-8183 AgenticCommerce kernel.
+Berth is not a directory of 300,000 names. It reads a wallet (Venus Core, live BSC stables), opens one of four slips, and refuses agents that do not answer. Hire is `createJob` on the official ERC-8183 kernel. If there is no explorer hash, the hire did not happen.
 
-Built for BNB Build the Era. Tracks: Main, TermiX, Altana, PancakeSwap.
+Live: https://noghosts.vercel.app
 
-Repo stays `noghosts` for now. The product name is Berth.
+## Product
 
-## Judge path
+- **Landing** `/` — what the desk is
+- **Desk** `/desk` — position, blotter, job ticket
+- **Hire** `/hire/[id]` — wallet tx to AgenticCommerce
+- **Proof** `/proof` — hash or nothing
+- **Advantage** `/advantage` — three timed reads vs a human path
+- **Docs** `/docs` — how it works, hire, rails
 
-1. Open the live URL.
-2. Default intent. Find berth.
-3. Open a card. Probe table. DOCKED means the registered endpoint answered.
-4. Connect wallet. Venus Core `getAccountLiquidity` is a mainnet read.
-5. Hire on testnet 97 unless you intend to spend mainnet $U.
-6. `/proof` must show an explorer hash.
-7. `/advantage` is DefiLlama, not a fixture.
+## Four slips
 
-Live: https://noghosts-godwin-web3s-projects.vercel.app
+| Slip | Source |
+| --- | --- |
+| Health factor | Venus `getAccountLiquidity` |
+| Yield | DefiLlama BSC stables, TVL > $50k |
+| Grid / range | Pancake V3 range as a job, not a badge |
+| Rebalance | LP move, same escrow |
+
+Ghosts: no public endpoint, or probe failed, or no protocol / x402 / receipt. Stars never rank.
+
+## Rails (BSC 56)
+
+- Identity `0x8004A169FB4a3325136EB29fA0ceB6D2e539a432`
+- Commerce `0xEa4DAa3100A767e86FDed867729ae7446476EBA6`
+- Evaluator `0x51895229E12F9876011789B04f8698af06cCD6DA`
+- Venus `0xfD36E2c2a6789Db23113685031d7F16329158384`
+
+No Berth contract. Do not fork commerce.
+
+## Demo (90s)
+
+1. Open Desk.
+2. Paste a BSC address or connect.
+3. Read posture. If AT RISK, health is already open.
+4. Take a DOCKED row. Empty is allowed.
+5. Hire → `createJob` → Proof hash.
+
+Hackathon: BNB Build the Era. Marketplace + partner tracks as desk features, not four apps.
+
+MIT

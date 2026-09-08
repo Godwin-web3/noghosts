@@ -62,10 +62,10 @@ export default function HirePage() {
     }
   }
 
-  if (!agent) return <p className="muted">Loading agent {id}…</p>;
+  if (!agent) return <p className="muted page">Loading agent {id}…</p>;
 
   return (
-    <main>
+    <main className="page">
       <p className="badge live">ERC-8183 CREATEJOB</p>
       <h1>Hire {agent.name}</h1>
       <p className="muted">Confirm in your wallet sends createJob on the official AgenticCommerce kernel. Not a simulated checkout.</p>
@@ -97,6 +97,7 @@ export default function HirePage() {
       {status && <p>{status}</p>}
       {err && <p className="err">{err}</p>}
       <p className="muted"><a href={`${SCAN[chain]}/address/${COMMERCE[chain]}`} target="_blank">Kernel on explorer</a></p>
+      <p className="muted" style={{ marginTop: 16 }}><a href="/desk">Back to desk</a></p>
     </main>
   );
 }
