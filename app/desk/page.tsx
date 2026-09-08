@@ -84,13 +84,13 @@ export default function Desk() {
   return (
     <main className="desk">
       <aside className="rail">
-        <p className="rail-h">POSITION</p>
+        <p className="rail-h">WALLET</p>
         <div className="rail-b">
           <button className="btn" onClick={connect}>
             {wallet ? `${wallet.slice(0, 6)}…${wallet.slice(-4)}` : "Connect wallet"}
           </button>
           <label>
-            OR PASTE ADDRESS
+            Wallet address
             <div className="addr">
               <input value={address} onChange={(e) => setAddress(e.target.value.trim())} placeholder="0x…" />
               <button onClick={() => address && loadDesk(address)}>Read</button>
@@ -98,9 +98,9 @@ export default function Desk() {
           </label>
           <div className="stat">
             <div className="row">
-              <span className="muted">Posture</span>
+              <span className="muted">Status</span>
               <b className={desk?.posture === "AT RISK" ? "tone-bad" : desk?.posture === "BUFFER" ? "tone-live" : ""}>
-                {desk?.posture ?? "—"}
+                {desk?.posture === "AT RISK" ? "At risk" : desk?.posture === "BUFFER" ? "Healthy" : desk?.posture === "IDLE" ? "Idle" : desk?.posture ?? "—"}
               </b>
             </div>
             <div className="row">
@@ -112,12 +112,12 @@ export default function Desk() {
               <b>{desk?.venus ? `$${Number(desk.venus.shortfallUsdApprox).toFixed(2)}` : "—"}</b>
             </div>
             <div className="row">
-              <span className="muted">BSC stable lead</span>
+              <span className="muted">Best stable APY</span>
               <b>{desk?.yieldTop ? `${desk.yieldTop.apy}%` : "—"}</b>
             </div>
           </div>
           <p className="muted" style={{ fontSize: 12 }}>
-            {intent || "Connect or paste an address. The desk stays quiet until there is a position."}
+            {intent || "Connect a wallet or paste an address to see what to hire for."}
           </p>
         </div>
       </aside>
@@ -136,7 +136,7 @@ export default function Desk() {
               {c.label}
             </button>
           ))}
-          <span className="census">scanned {scanned} · refused {dropped} · live {live.length}</span>
+          <span className="census">checked {scanned} · skipped {dropped} · live {live.length}</span>
         </div>
         {err && <p className="err">{err}</p>}
         <div className="blotter">
@@ -144,9 +144,9 @@ export default function Desk() {
             <thead>
               <tr>
                 <th>ID</th>
-                <th>OFFERING</th>
+                <th>AGENT</th>
                 <th>STATUS</th>
-                <th>SIGNAL</th>
+                <th>PROTOCOL</th>
                 <th></th>
               </tr>
             </thead>
@@ -159,8 +159,8 @@ export default function Desk() {
               {!loading && live.length === 0 && (
                 <tr>
                   <td colSpan={5}>
-                    <p>No berth this pass.</p>
-                    <p className="muted">{dropped} registrations refused. Empty is the result.</p>
+                    <p>No live agents in this search.</p>
+                    <p className="muted">{dropped} listings skipped because they did not answer.</p>
                   </td>
                 </tr>
               )}
@@ -173,7 +173,7 @@ export default function Desk() {
                       <div className="muted" style={{ fontSize: 12 }}>{a.description || "No registration description."}</div>
                     </td>
                     <td>
-                      <span className={a.health.live ? "live" : "dead"}>{a.health.live ? "DOCKED" : "AT SEA"}</span>
+                      <span className={a.health.live ? "live" : "dead"}>{a.health.live ? "Live" : "Offline"}</span>
                     </td>
                     <td className="mono faint">{(a.protocols?.[0] || "—") + (a.x402 ? " · x402" : "")}</td>
                     <td style={{ textAlign: "right" }}>
@@ -188,7 +188,7 @@ export default function Desk() {
         </div>
       </section>
       <aside className="ticket">
-        <p className="rail-h">JOB TICKET</p>
+        <p className="rail-h">HIRE</p>
         <div className="rail-b">
           {picked ? (
             <>
@@ -198,23 +198,22 @@ export default function Desk() {
               </div>
               <p className="muted" style={{ fontSize: 13 }}>{intent}</p>
               <div className="stat">
-                <div className="row"><span className="muted">Provider</span><b>{picked.wallet ? `${picked.wallet.slice(0, 6)}…${picked.wallet.slice(-4)}` : "—"}</b></div>
+                <div className="row"><span className="muted">Agent</span><b>{picked.wallet ? `${picked.wallet.slice(0, 6)}…${picked.wallet.slice(-4)}` : "—"}</b></div>
                 <div className="row"><span className="muted">Endpoint</span><b>{picked.endpoints?.[0]?.url?.replace(/^https?:\/\//, "") || "missing"}</b></div>
-                <div className="row"><span className="muted">Stars</span><b>{picked.receipts.stars} ignored</b></div>
-                <div className="row"><span className="muted">Receipts</span><b>{picked.receipts.score}</b></div>
+                <div className="row"><span className="muted">Completed jobs</span><b>{picked.receipts.score}</b></div>
               </div>
               <p className="muted" style={{ fontSize: 12 }}>
-                Session cap and expiry are on the hire screen. createJob hits the official ERC-8183 kernel.
+                Set a time limit on the next screen. Confirm in your wallet to post the job on BNB.
               </p>
               <Link className="btn" href={`/hire/${picked.tokenId}?intent=${encodeURIComponent(intent)}`} style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-                Open hire
+                Continue
               </Link>
               <Link href={`/agent/${picked.tokenId}`} className="muted" style={{ textAlign: "center", fontSize: 12 }}>
-                Evidence
+                Details
               </Link>
             </>
           ) : (
-            <p className="muted">Select a row. The ticket fills from the desk, not from a blank form.</p>
+            <p className="muted">Select an agent to review the job.</p>
           )}
         </div>
       </aside>

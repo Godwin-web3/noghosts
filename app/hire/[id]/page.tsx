@@ -110,7 +110,7 @@ export default function HirePage() {
       window.location.href = `/proof?tx=${hash}&chain=${chain}`;
     } catch (e: any) {
       const msg = String(e?.message || e);
-      if (msg.includes("4001") || e?.code === 4001) setErr("You rejected it in OKX. Tap Send createJob again, then Confirm.");
+      if (msg.includes("4001") || e?.code === 4001) setErr("You rejected it in OKX. Tap Confirm hire again.");
       else if (/insufficient|bnb/i.test(msg)) setErr("This wallet needs a little BNB for gas. Switch the chain dropdown to BSC testnet 97 if you have tBNB.");
       else setErr(msg);
       setStatus("");
@@ -121,7 +121,6 @@ export default function HirePage() {
 
   return (
     <main className="page">
-      <p className="badge live">ERC-8183 CREATEJOB</p>
       <h1>Hire {agent.name}</h1>
       <p className="muted">
         This is the actual hire. Confirm in OKX sends createJob on BNB’s official job contract. You are not depositing money yet — that is a later step. You only pay a tiny gas fee in BNB.
@@ -157,7 +156,7 @@ export default function HirePage() {
           {account ? account.slice(0, 8) : "Connect"}
         </button>
         <button className="btn" onClick={sendCreate}>
-          Send createJob
+          Confirm hire
         </button>
       </div>
       {status && <p>{status}</p>}

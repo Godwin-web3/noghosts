@@ -21,7 +21,7 @@ const serif = Instrument_Serif({
 
 export const metadata: Metadata = {
   title: "Berth",
-  description: "A berth only if the agent can dock. Position-first hiring for ERC-8004 agents on BNB Smart Chain.",
+  description: "Hire live BNB agents from your wallet. Dead listings are refused.",
   icons: { icon: "/favicon.svg" },
 };
 
@@ -36,11 +36,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               BERTH
             </Link>
             <nav className="nav-right">
-              <Link href="/desk">Desk</Link>
+              <Link href="/desk">Jobs</Link>
               <Link href="/docs">Docs</Link>
-              <Link href="/advantage">Advantage</Link>
-              <Link href="/proof">Proof</Link>
-              <span className="pill">BSC 56</span>
+              <Link href="/advantage">Compare</Link>
+              <Link href="/proof">Activity</Link>
+              <span className="pill">BNB</span>
             </nav>
           </header>
           {children}

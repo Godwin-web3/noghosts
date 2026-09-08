@@ -31,7 +31,7 @@ export default function DocsHome() {
         </ol>
         <p className="muted">Demo: open the desk, paste an address, take a DOCKED row, send createJob, land on Proof.</p>
         <Link className="btn" href="/desk" style={{ display: "inline-flex", alignItems: "center", marginTop: 24 }}>
-          Open the desk
+          Find an agent
         </Link>
       </article>
     </div>

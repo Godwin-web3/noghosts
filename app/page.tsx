@@ -7,17 +7,17 @@ export default function Landing() {
         <img src="/media/hero.jpg" alt="Empty concrete berth at night" />
         <div className="hero-veil" />
         <div className="hero-copy">
-          <p className="kicker">SLIP 00 · BSC</p>
+          <p className="kicker">BNB CHAIN</p>
           <h1 className="display">A berth is earned.</h1>
           <p className="lede">
-            Hundreds of thousands of ERC-8004 names. Almost none answer. Berth reads the wallet first, then opens a slip only for an agent that can dock.
+            Hundreds of thousands of agents are registered on BNB. Almost none answer. Berth reads your wallet first, then only shows agents that are actually live.
           </p>
           <div className="cta">
             <Link className="btn" href="/desk">
-              Open the desk
+              Find an agent
             </Link>
             <Link className="btn ghost" href="/docs">
-              Read the rails
+              Docs
             </Link>
           </div>
         </div>
@@ -29,19 +29,19 @@ export default function Landing() {
         </figure>
         <div className="split-copy">
           <p className="kicker faint">01 · PROBLEM</p>
-          <h2 className="display-sm">The registry is a graveyard.</h2>
+          <h2 className="display-sm">Most listings are dead.</h2>
           <p className="muted">
-            Registration is not an offering. Stars are not a job. If the endpoint is silent, Berth refuses the berth. Empty is a valid result.
+            A registration is not a working agent. If it does not answer, Berth hides it. Empty search results are allowed.
           </p>
         </div>
       </section>
 
       <section className="split reverse">
         <div className="split-copy">
-          <p className="kicker faint">02 · QUERY</p>
-          <h2 className="display-sm">The wallet is the query.</h2>
+          <p className="kicker faint">02 · YOUR WALLET</p>
+          <h2 className="display-sm">Start from the wallet, not a catalog.</h2>
           <p className="muted">
-            Venus liquidity and shortfall. A live BSC stable board. Pancake range as a category, not a badge. The job ticket is written from those numbers.
+            We read Venus health and live BNB yields, then suggest what to hire. You do not browse 300,000 names first.
           </p>
         </div>
         <figure>
@@ -55,9 +55,9 @@ export default function Landing() {
         </figure>
         <div className="split-copy">
           <p className="kicker faint">03 · HIRE</p>
-          <h2 className="display-sm">No new contract.</h2>
+          <h2 className="display-sm">Jobs go on BNB’s official contract.</h2>
           <p className="muted">
-            createJob on the official ERC-8183 kernel. Provider, evaluator, expiry. If there is no explorer hash, the hire did not happen.
+            Confirm in your wallet. If there is no explorer hash, the hire did not happen.
           </p>
           <Link className="text-link" href="/docs/rails">
             Contract addresses
@@ -68,24 +68,24 @@ export default function Landing() {
       <section className="chart-band">
         <img src="/media/chart.jpg" alt="" />
         <div className="chart-inner">
-          <p className="kicker faint">04 · FOUR SLIPS</p>
-          <h2 className="display-sm">Equal depth. No extra categories.</h2>
+          <p className="kicker faint">04 · JOBS</p>
+          <h2 className="display-sm">Four job types. That’s it.</h2>
           <div className="slips">
             <article>
-              <h3>Health factor</h3>
-              <p>Venus Core getAccountLiquidity. At-risk wallets open this slip first.</p>
+              <h3>Health</h3>
+              <p>Venus borrow health. At-risk wallets see this first.</p>
             </article>
             <article>
               <h3>Yield</h3>
-              <p>DefiLlama live BSC stables. TVL floor. No invented APYs.</p>
+              <p>Live BNB stable yields. No invented APYs.</p>
             </article>
             <article>
-              <h3>Grid / range</h3>
-              <p>Watch a Pancake V3 range. Report. Do not take custody.</p>
+              <h3>Range</h3>
+              <p>Watch a Pancake liquidity range. Report only.</p>
             </article>
             <article>
               <h3>Rebalance</h3>
-              <p>Propose an LP move. Same escrow. Same expiry.</p>
+              <p>Propose an LP move. Same job contract.</p>
             </article>
           </div>
         </div>
@@ -94,12 +94,12 @@ export default function Landing() {
       <footer className="site-foot">
         <div>
           <p className="brand-foot">BERTH</p>
-          <p className="muted">BNB Build the Era. Identity ERC-8004. Commerce ERC-8183. Source 8004scan.</p>
+          <p className="muted">Hire live agents on BNB. Source: 8004scan.</p>
         </div>
         <div className="foot-nav">
-          <Link href="/desk">Desk</Link>
+          <Link href="/desk">Jobs</Link>
           <Link href="/docs">Docs</Link>
-          <Link href="/advantage">Advantage</Link>
+          <Link href="/advantage">Compare</Link>
         </div>
       </footer>
     </main>

@@ -22,7 +22,7 @@ export default function AgentPage() {
   const a = data.agent;
   return (
     <main>
-      <p className={a.health.live ? "badge live" : "badge dead"}>{a.health.live ? "LIVE PROBE" : "FAILED PROBE"}</p>
+      <p className={a.health.live ? "badge live" : "badge dead"}>{a.health.live ? "Live" : "Offline"}</p>
       <h1>{a.name}</h1>
       <p>{a.description}</p>
       <p className="mono">owner {a.owner}</p>

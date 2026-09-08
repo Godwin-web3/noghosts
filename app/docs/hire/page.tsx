@@ -24,7 +24,7 @@ hook       0x0`}</pre>
         <h2>Proof</h2>
         <p className="muted">After the tx, Proof stores the hash locally and links BscScan. No hash means no hire.</p>
         <Link className="btn" href="/desk" style={{ display: "inline-flex", alignItems: "center", marginTop: 24 }}>
-          Open the desk
+          Find an agent
         </Link>
       </article>
     </div>

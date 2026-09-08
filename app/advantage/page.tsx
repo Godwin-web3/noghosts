@@ -19,9 +19,8 @@ export default function Advantage() {
   }, []);
   return (
     <main className="page">
-      <p className="badge live">TERMIX · AGENT ADVANTAGE</p>
-      <h1>100 USDT stable yield on BSC</h1>
-      <p>Human path: DefiLlama, filter BSC, filter stable, sort APY. This path hits the same primary source once and ranks it.</p>
+      <h1>Compare</h1>
+      <p className="muted">Same job, two clocks. A person clicking DefiLlama vs Berth hitting the same source once.</p>
       <table>
         <thead><tr><th></th><th>Human</th><th>This path</th></tr></thead>
         <tbody>
